@@ -26,4 +26,3 @@ pickle-email-*.html
 /yarn-error.log
 .byebug_history
 *.swp
-config/secrets.yml
