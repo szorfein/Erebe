@@ -2,12 +2,14 @@
   "name": "client",
   "version": "0.0.0",
   "license": "MIT",
+  "angular-cli": {},
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "preinstall": "npm install -g node-gyp",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -43,5 +45,9 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.3.2",
     "typescript": "~2.3.3"
+  },
+  "engines": {
+      "node": "6.9.3",
+      "npm": "3.10.10"
   }
 }
