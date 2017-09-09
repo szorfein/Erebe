@@ -26,3 +26,5 @@ pickle-email-*.html
 /yarn-error.log
 .byebug_history
 *.swp
+client/node_modules
+client/dist
