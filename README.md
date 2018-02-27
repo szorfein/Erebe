@@ -1,26 +1,73 @@
-### Shaken-web
+# Shaken-web
 
-This project has been generate with command:
+This server is an API server with ruby & rails and mongoid, used to build website.  
+Will work with a client like [penthotal](https://github.com/szorfein/penthotal) write with `ionic`.
 
-    $ mkdir project && cd project/
-    $ rails new ./ --skip-active-record
-    $ npm install -g angular-cli
-    $ ng new client
-    $ cd client
-    $ ng build --prod
-    $ cd ..
-    $ rm -rf public
-    $ ln -s client/dist public
+## Install
 
-Launch rails:
+You have to install rails 5 and mongodb v3.6.
 
+    $ git clone https://github.com/szorfein/shaken-web.git
+    $ cd shaken-web
     $ rails s
 
-And go to http://localhost:3000.
+Server start at `http://localhost:3000`.
+
+## API 
+
+
+
+### Build from scratch
+
++ Rails
+
+```
+$ mkdir project && cd project/
+$ rails new ./ --api -T --skip-active-record
+$ echo "gem 'mongoid', '~> 6.1.0'" >> Gemfile
+$ echo "gem 'rack-cors'" >> Gemfile
+$ bundle install
+```
+
++ Mongoid, use [x509 auth](https://szorfein.github.io/mongodb/secure-mongodb/)
+
+```
+$ rails g mongoid:config
+```
+
+And look `config/mongoid.yml`, it take 2 var from env, you can set in `.bashrc` or other shell:
+
++ `export SHAKEN_C="<path to mongo-client.pem"`
++ `export MONGO_CA="<path to mongo-ca.pem>"`
+
+And generate database with rails:
+
+    $ rails db:create
+    $ rails generate scaffold book name:string
+    $ rails db:migrate
+    $ mkdir db
+    $ vim db/seeds.rb
+
+Create somes datas:
+
+```
+Book.create!([
+  { name: 'Copying and Pasting from Stack Overflow' },
+  { name: 'Trying Stuff Until it Works' }
+])
+```
+
+And populate database with this.
+
+    $ rails db:seed
+    $ rails s
+
+Look at `http://localhost:3000/book.json` must have our books.
 
 ### Links: 
 
-[Rails & Angular](https://blogstephenarifin.wordpress.com/2017/01/09/angular-2-and-ruby-on-rails-on-heroku/)  
+[Rails & Angular 1](https://blogstephenarifin.wordpress.com/2017/01/09/angular-2-and-ruby-on-rails-on-heroku/) 
+[Rails & Angular 2](https://www.codewithjason.com/getting-started-with-angular-and-rails/)  
 [Mongoid](https://docs.mongodb.com/mongoid/master/tutorials/mongoid-installation/)  
 [Mongo Sec](https://docs.mongodb.com/manual/administration/security-checklist/)  
 [Rails](http://guides.rubyonrails.org/getting_started.html)  
