@@ -1,14 +1,14 @@
-# Shaken-web
+# Erebe
 
 This server is an API server with ruby & rails and mongoid, used to build website.  
-Will work with a client like [penthotal](https://github.com/szorfein/penthotal) write with `ionic`.
+Will work with a client like [Nyxl](https://github.com/szorfein/Nyx) write with `ionic`.
 
-## Install
+## Install
 
 You have to install rails 5 and mongodb v3.6.
 
-    $ git clone https://github.com/szorfein/shaken-web.git
-    $ cd shaken-web
+    $ git clone https://github.com/szorfein/Erebe.git
+    $ cd Erebe
     $ rails s
 
 Server start at `http://localhost:3000`.
