@@ -66,8 +66,7 @@ Look at `http://localhost:3000/book.json` must have our books.
 
 ### Links: 
 
-[Rails & Angular 1](https://blogstephenarifin.wordpress.com/2017/01/09/angular-2-and-ruby-on-rails-on-heroku/) 
-[Rails & Angular 2](https://www.codewithjason.com/getting-started-with-angular-and-rails/)  
-[Mongoid](https://docs.mongodb.com/mongoid/master/tutorials/mongoid-installation/)  
-[Mongo Sec](https://docs.mongodb.com/manual/administration/security-checklist/)  
-[Rails](http://guides.rubyonrails.org/getting_started.html)  
++ Rails with Angular2: [stephenarifin](https://blogstephenarifin.wordpress.com/2017/01/09/angular-2-and-ruby-on-rails-on-heroku/) | [codewithjason](https://www.codewithjason.com/getting-started-with-angular-and-rails/)  
++ mongo[db|id]: [mongodb security](https://docs.mongodb.com/manual/administration/security-checklist/) | [install](https://docs.mongodb.com/mongoid/master/tutorials/mongoid-installation/)  
++ official rails guide: [rails](http://guides.rubyonrails.org/getting_started.html)  
++ secure env: [starkandwayne](http://www.starkandwayne.com/blog/rails-5-1-applications-can-be-a-lot-more-secretive-on-cloud-foundry-and-heroku/) | [engineYard](https://www.engineyard.com/blog/encrypted-rails-secrets-on-rails-5.1)
