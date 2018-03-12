@@ -69,4 +69,7 @@ Look at `http://localhost:3000/book.json` must have our books.
 + Rails with Angular2: [stephenarifin](https://blogstephenarifin.wordpress.com/2017/01/09/angular-2-and-ruby-on-rails-on-heroku/) | [codewithjason](https://www.codewithjason.com/getting-started-with-angular-and-rails/)  
 + mongo[db|id]: [mongodb security](https://docs.mongodb.com/manual/administration/security-checklist/) | [install](https://docs.mongodb.com/mongoid/master/tutorials/mongoid-installation/)  
 + official rails guide: [rails](http://guides.rubyonrails.org/getting_started.html)  
-+ secure env: [starkandwayne](http://www.starkandwayne.com/blog/rails-5-1-applications-can-be-a-lot-more-secretive-on-cloud-foundry-and-heroku/) | [engineYard](https://www.engineyard.com/blog/encrypted-rails-secrets-on-rails-5.1)
++ secure env: [starkandwayne](http://www.starkandwayne.com/blog/rails-5-1-applications-can-be-a-lot-more-secretive-on-cloud-foundry-and-heroku/) | [engineYard](https://www.engineyard.com/blog/encrypted-rails-secrets-on-rails-5.1)  
++ Encrypt data: [cookieshq](https://www.cookieshq.co.uk/posts/encrypting-secrets-with-rails)
+
++ Jwt auth: [?](https://github.com/pluralsight/guides/blob/master/published/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api/article.md) | [codementor](https://www.codementor.io/omedale/simple-approach-to-rails-5-api-authentication-with-json-web-token-cpqbgrdo6)
