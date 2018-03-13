@@ -1,34 +1,23 @@
 module Secured
     extend ActiveSupport::Concern
 
-    #included do
-    #    before_action :authenticate!
-    #end
+    included do
+        before_action :authenticate_request!
+    end
 
     private 
 
-    def validate_token!
-        begin
-            TokenProvider.valid?(token)
-        rescue
-            render json: { errors: ['Not Authenticated'] }, status: :unauthorized
-        end
+    def authenticate_request!
+        auth_token
+    rescue JWT::VerificationError, JWT::DecodeError
+        render json: { errors: ['Not Authenticated'] }, status: :unauthorized
     end
 
-    def authenticate!
-        begin
-            payload, header = TokenProvider.valid?(token)
-            @current_user = User.find_by(id: payload['user_id'])
-        rescue
-            render json: { errors: ['Not Authenticated'] }, status: :unauthorized
-        end
+    def auth_token
+        TokenProvider.valid(http_token)
     end
 
-    def current_user
-        @current_user ||= authenticate!
-    end
-
-    def token
+    def http_token
         if request.headers['Authorization'].present?
             request.headers['Authorization'].split(' ').last
         end

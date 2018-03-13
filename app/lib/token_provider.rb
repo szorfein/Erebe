@@ -9,7 +9,7 @@ class TokenProvider
         nil
     end
 
-    def self.valid?(token)
+    def self.valid(token)
         begin
             JWT.decode(token, Rails.application.secrets.secret_key_base)
         end

@@ -1,7 +1,7 @@
 # Erebe
 
 This server is an API server with ruby & rails and mongoid, used to build website.  
-Will work with a client like [Nyxl](https://github.com/szorfein/Nyx) write with `ionic`.
+Will work with a client like [Nyx](https://github.com/szorfein/Nyx) write with `ionic`.
 
 ## Install
 
@@ -16,6 +16,16 @@ Server start at `http://localhost:3000`.
 ## API 
 
 
+## Use our api with curl
+
+Example to create a new user:
+
+```sh
+$ curl --url 'http://127.0.0.1:3000/users' \
+  --header 'content-type:application/json' \
+  --request POST \
+  --data '{"username":"robs","email":"robs@corp.uk","password":"bbbbbbbb"}'
+```
 
 ### Build from scratch
 

@@ -1,8 +1,13 @@
 class User
   include Mongoid::Document
+  #include Mongoid::Timestamps
+  #include ActiveModel::SecurePassword
   authenticates_with_sorcery!
 
-  validates :username, presence: true, uniqueness: true
-  validates :password, length: { minimum: 8 }, on: :create
+  #field :password_digest
+
+  validates :username, uniqueness: true, on: :create
   validates :email, uniqueness: true, email_format: true
+  
+  #has_secure_password
 end
