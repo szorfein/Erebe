@@ -32,6 +32,7 @@ class UsersController < ApplicationController
     # DELETE /users/1
     def destroy
         @user.destroy
+        render json: { message: 'user has been remove' }
     end
 
     private
@@ -42,6 +43,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-        params.require(:user).permit(:username, :email, :password)
+        params.require(:user).permit(:email, :password, :password_confirmation)
     end
 end

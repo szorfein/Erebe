@@ -24,7 +24,13 @@ Example to create a new user:
 $ curl --url 'http://127.0.0.1:3000/users' \
   --header 'content-type:application/json' \
   --request POST \
-  --data '{"username":"robs","email":"robs@corp.uk","password":"bbbbbbbb"}'
+  --data '{"user":{"email":"robss@corp.uk","password":"ppeeeeee","password_confirmation":"ppeeeeee"}}'
+```
+
+Delete an user with id:
+
+```sh
+$ curl --request DELETE --url 'http://127.0.0.1:3000/users/5aa945f2fbf3af1f82b7b342'
 ```
 
 ### Build from scratch

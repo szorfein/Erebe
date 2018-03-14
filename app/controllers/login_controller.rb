@@ -3,6 +3,7 @@ class LoginController < ApplicationController
         @user = User.new
     end
 
+    # POST /login
     def auth_user
         if @user = login(params[:email], params[:password])
             user_info = User.find(params[:email])
@@ -12,6 +13,7 @@ class LoginController < ApplicationController
         end
     end
 
+    # POST /logout
     def destroy
         logout
         render json: { message: 'Successfully logout.' }
