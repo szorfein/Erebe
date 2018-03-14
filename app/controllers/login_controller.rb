@@ -1,13 +1,10 @@
 class LoginController < ApplicationController
-    def new
-        @user = User.new
-    end
 
     # POST /login
     def auth_user
-        if @user = login(params[:email], params[:password])
-            user_info = User.find(params[:email])
-            render json: payload(user_info)
+        user = User.find_by(email: params[:email])
+        if user = User.authenticate(params[:email], params[:password])
+            render json: payload(user)
         else
             render json: { errors: ['Invalid username|password'] }, status: :unauthorized
         end
