@@ -13,10 +13,7 @@ You have to install rails 5 and mongodb v3.6.
 
 Server start at `http://localhost:3000`.
 
-## API 
-
-
-## Use our api with curl
+## API with curl
 
 Example to create a new user:
 
@@ -31,6 +28,18 @@ Delete an user with id:
 
 ```sh
 $ curl --request DELETE --url 'http://127.0.0.1:3000/users/5aa945f2fbf3af1f82b7b342'
+```
+
+Login: 
+
+```sh
+$ curl --url 'http://127.0.0.1:3000/login' --header 'content-type:application/json' --request POST --data '{"email":"robss@corp.uk","password":"ppeeeeee"}'
+```
+
+Add a new book, you need a jwt token:
+
+```sh
+$ curl --url 'http://127.0.0.1:3000/books' --header "Authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjp7IiRvaWQiOiI1YWE5NDYyM2ZiZjNhZjI3ZTNiY2NmZDAifX0.hlZf_CzNxmB_DjtM20bU-d6ou2TObrbFYdB7B_VZd-4" --header 'content-type:application/json' --request POST --data '{"book":{"name":"kari"}}'
 ```
 
 ### Build from scratch

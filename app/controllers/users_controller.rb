@@ -1,13 +1,8 @@
 class UsersController < ApplicationController
+    include Secured
 
     before_action :set_user, only: [:update, :destroy]
-
-    # GET /users
-    def index
-        @users = User.all
-
-        render json: @users
-    end
+    skip_before_action :authenticate_request!, only: [:create]
 
     # POST /users
     def create

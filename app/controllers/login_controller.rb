@@ -1,4 +1,7 @@
 class LoginController < ApplicationController
+    include Secured
+
+    skip_before_action :authenticate_request!, only: [:logout]
 
     # POST /login
     def auth_user

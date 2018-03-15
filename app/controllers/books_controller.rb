@@ -1,9 +1,9 @@
 class BooksController < ApplicationController
-    #include Secured
+    include Secured
 
     before_action :set_book, only: [:show, :update, :destroy]
     #before_action :authenticate!
-    #skip_before_action :authenticate!, only: [:index, :show]
+    skip_before_action :authenticate_request!, only: [:index, :show]
 
     # GET /books
     def index
