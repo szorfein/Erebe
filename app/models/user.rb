@@ -3,6 +3,10 @@ class User
   #include Mongoid::Timestamps
   authenticates_with_sorcery!
 
+  validates :username,
+      uniqueness: true,
+      length: { minimum: 3 }
+
   validates :email, 
       uniqueness: true, 
       email_format: true
