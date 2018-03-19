@@ -25,7 +25,8 @@ class LoginController < ApplicationController
         return nil unless user and user.id
         {
             auth_token: TokenProvider.encode({ user_id: user.id }),
-            user: { id: user.id, email: user.email}
+            user: { id: user.id, email: user.email },
+            expiresIn: (1).minutes.from_now.to_i
         }
     end
 end

@@ -1,5 +1,6 @@
 class TokenProvider
     def self.encode(payload)
+        payload[:exp] = (1).minutes.from_now.to_i
         JWT.encode(payload, Rails.application.secrets.secret_key_base)
     end
 
