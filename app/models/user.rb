@@ -22,4 +22,14 @@ class User
   validates :password_confirmation,
       presence: true,
       if: -> { new_record? || changes[:crypted_password] }
+
+  # hack for use virtual field
+  validates :token, acceptance: true
+  before_validation :removeToken
+
+  private
+  def removeToken
+      self.token = true
+  end
+
 end

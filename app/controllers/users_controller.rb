@@ -2,6 +2,7 @@ class UsersController < ApplicationController
     include Secured
 
     before_action :set_user, only: [:update, :destroy]
+    before_action :set_auth, only: [:create]
     skip_before_action :authenticate_request!, only: [:create, :index]
 
     # Get /users
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
     # POST /users
     def create
         @user = User.new(user_params)
+        @user[:auth] = @auth[:id]
 
         if @user.save
             render json: @user, status: :created, location: @user
@@ -43,8 +45,17 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    def set_auth
+        begin
+            puts "we receive token #{user_params[:token]}"
+            @auth = Auth.find_by(token: user_params[:token])
+        rescue
+            render json: { message: "bad request..." }
+        end
+    end
+
     # Only allow a trusted parameter "white list" through.
     def user_params
-        params.require(:user).permit(:username, :email, :password, :password_confirmation)
+        params.require(:user).permit(:username, :email, :password, :password_confirmation, :token)
     end
 end

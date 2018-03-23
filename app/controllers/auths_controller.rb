@@ -17,6 +17,9 @@ class AuthsController < ApplicationController
   def create
     @auth = Auth.new(auth_params)
 
+    @auth[:created_at] = Time.now
+    @auth[:token] = SecureRandom.base58(24)
+
     if @auth.save
       render json: @auth, status: :created, location: @auth
     else
