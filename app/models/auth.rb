@@ -6,10 +6,15 @@ class Auth
   field :lastname, type: String
   field :created_at, type: Date
   field :token, type: String 
+  field :ip_addr, type: String 
+  field :isPrimalInstance, type: Boolean
   
   has_many :user 
   
   validates :domain, uniqueness: true, presence: true
   validates :rootmail, uniqueness: true, email_format: true
   validates :token, uniqueness: true, presence: true
+  validates :ip_addr, uniqueness: true, presence: true
+  validates :isPrimalInstance, presence: true
+
 end

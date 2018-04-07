@@ -15,16 +15,25 @@ class AuthsController < ApplicationController
 
   # POST /auths
   def create
-    @auth = Auth.new(auth_params)
+      authCount = Auth.all.count
+      isPrimal = false
+      ip_addr = request.remote_ip
+      @auth = Auth.new(auth_params)
 
-    @auth[:created_at] = Time.now
-    @auth[:token] = SecureRandom.base58(24)
+      if ( authCount == 0 ) 
+          isPrimal = true
+      end
 
-    if @auth.save
-      render json: @auth, status: :created, location: @auth
-    else
-      render json: @auth.errors, status: :unprocessable_entity
-    end
+      @auth[:created_at] = Time.now
+      @auth[:token] = SecureRandom.base58(24)
+      @auth[:ip_addr] = ip_addr
+      @auth[:isPrimalInstance] = isPrimal
+
+      if @auth.save
+          render json: @auth, status: :created, location: @auth
+      else
+          render json: @auth.errors, status: :unprocessable_entity
+      end
   end
 
   # PATCH/PUT /auths/1
