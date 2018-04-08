@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         @user[:auth] = @auth[:id]
 
-        if @user.save
+        if @user.save!
             render json: @user, status: :created, location: @user
         else
             render json: @user.errors, status: :unprocessable_entity
@@ -46,11 +46,17 @@ class UsersController < ApplicationController
     end
 
     def set_auth
-        begin
-            puts "we receive token #{user_params[:token]}"
-            @auth = Auth.find_by(token: user_params[:token])
-        rescue
-            render json: { message: "bad request..." }
+        checkToken!
+    end
+
+    def checkToken!
+        @token = user_params[:token]
+        tokenLength = @token.length
+        if @token == nil || tokenLength != 24
+            render json: { errors: ['Bad token parameter'] },
+                status: :unauthorized
+        else
+            @auth = Auth.find_by(token: @token)
         end
     end
 
