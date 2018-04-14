@@ -10,7 +10,7 @@ class HomeController < ApplicationController
             puts( 'param 1' )
             say
         elsif (param == '2')
-            puts( 'param 2' )
+            render json: { message: 'param 2' }
         else
             render json: { error: "cant process" }, status: 404
         end

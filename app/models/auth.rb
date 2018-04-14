@@ -10,6 +10,7 @@ class Auth
   field :isPrimalInstance, type: Boolean
   
   has_many :user 
+  has_many :homemsg
   
   validates :domain, uniqueness: true, presence: true
   validates :rootmail, uniqueness: true, email_format: true
