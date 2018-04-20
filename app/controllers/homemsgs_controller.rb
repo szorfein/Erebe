@@ -1,5 +1,7 @@
 class HomemsgsController < ApplicationController
   before_action :set_homemsg, only: [:show, :update, :destroy]
+  before_action :set_auth, only: [:create]
+  include Token
 
   # GET /homemsgs
   def index
@@ -16,6 +18,7 @@ class HomemsgsController < ApplicationController
   # POST /homemsgs
   def create
     @homemsg = Homemsg.new(homemsg_params)
+    @homemsg[:auth] = @auth[:id]
 
     if @homemsg.save
       render json: @homemsg, status: :created, location: @homemsg
@@ -44,8 +47,12 @@ class HomemsgsController < ApplicationController
       @homemsg = Homemsg.find(params[:id])
     end
 
+    def set_auth
+        checkToken(homemsg_params[:token])
+    end
+
     # Only allow a trusted parameter "white list" through.
     def homemsg_params
-      params.require(:homemsg).permit(:instance, :title, :message, :created_at, :class_page)
+      params.require(:homemsg).permit(:title, :message, :created_at, :class_page, :token)
     end
 end

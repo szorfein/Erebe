@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Token
   #include Mongoid::Timestamps
   authenticates_with_sorcery!
 
@@ -23,13 +24,8 @@ class User
       presence: true,
       if: -> { new_record? || changes[:crypted_password] }
 
-  # hack for use virtual field
+    # hack to use virtual field
   validates :token, acceptance: true
   before_validation :removeToken
-
-  private
-  def removeToken
-      self.token = true
-  end
 
 end

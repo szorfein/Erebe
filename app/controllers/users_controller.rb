@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     include Secured
+    include Token
 
     before_action :set_user, only: [:update, :destroy]
     before_action :set_auth, only: [:create]
@@ -46,18 +47,7 @@ class UsersController < ApplicationController
     end
 
     def set_auth
-        checkToken!
-    end
-
-    def checkToken!
-        @token = user_params[:token]
-        tokenLength = @token.length
-        if @token == nil || tokenLength != 24
-            render json: { errors: ['Bad token parameter'] },
-                status: :unauthorized
-        else
-            @auth = Auth.find_by(token: @token)
-        end
+        checkToken(user_params[:token])
     end
 
     # Only allow a trusted parameter "white list" through.

@@ -1,5 +1,6 @@
 class Homemsg
   include Mongoid::Document
+  include Token
 
   field :title, type: String
   field :message, type: String
@@ -10,4 +11,7 @@ class Homemsg
 
   validates :title, presence: true
   validates :message, presence: true
+
+  validates :token, acceptance: true
+  before_validation :removeToken
 end
